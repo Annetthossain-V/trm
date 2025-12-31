@@ -2,9 +2,9 @@
 
 override OUTPUT = trm
 
-CXX = g++
-CXXFLAG := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -Wall -Wextra -ffunction-sections
-LDFLAG := -flto  -Wl,-O2 -Wl,--gc-sections -Wl,--as-needed -Wl,-z,relro,-z,now 
+CXX = c++
+CXXFLAG := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -Wall -Wextra -ffunction-sections -I/home/annetthossain/include/ -Isrc/ -std=c++23 -fPIE -g
+LDFLAG := -flto  -Wl,-O2 -Wl,--as-needed -Wl,--gc-sections -Wl,-z,relro,-z,now -g
 
 
 override SRCFILES := $(shell find -L src/ -type f 2>/dev/null | LC_ALL=C sort)
