@@ -44,7 +44,7 @@ bool cmdline::contains(cmdopt opt) {
   return false;
 }
 
-void cmdline::info(u32 total_trashed_file) {
+void cmdline::info(u32 total_trashed_file, FILE* trash_cat) {
   if (this->contains(cmdopt::Version)) 
   {
     std::println("version {}", VERSION);
@@ -53,6 +53,11 @@ void cmdline::info(u32 total_trashed_file) {
   else if (this->contains(cmdopt::PrintTrashed)) 
   {
     std::println("Total Trashed file `{}`", total_trashed_file);
+    
+    for (u32 i = 0; i < total_trashed_file; ++i) {
+
+    }
+
     std::exit(0);
   }
   else if (this->contains(cmdopt::Help)) 

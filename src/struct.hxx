@@ -29,13 +29,21 @@ void make_header(FILE* trash_cat);
 
 struct ItemEntry {
   u16 entry_start;
+  u32 id;
+
   u16 original_name_len;
   u16 new_name_len;
   u16 original_path_len;
+
   char* orignal_name;
   char* new_name;
   char* original_path;
+
   u8 is_dir;
+  usize date;
   u16 entry_end;
 } __attribute__((packed));
 typedef struct ItemEntry ItemEntry;
+
+void write_item_entry(ItemEntry* entry);
+ItemEntry* read_item_entry(FILE* trash_cat);

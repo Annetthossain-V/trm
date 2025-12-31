@@ -31,4 +31,10 @@ TrashCatHeader* read_header(FILE* trash_cat)
   return trash_header;
 }
 
+void write_item_entry(ItemEntry* entry) {
 
+}
+
+ItemEntry* read_item_entry(FILE* trash_cat) {
+
+}

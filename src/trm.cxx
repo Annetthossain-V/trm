@@ -1,3 +1,4 @@
+#include "com.hxx"
 #include "struct.hxx"
 #include <spdlog/spdlog.h>
 #include <stdexcept>
@@ -55,15 +56,12 @@ int main(const int argc, const char** argv) {
 
     cmdline cmd(argc, argv);
     TrashCatHeader* trash_cat_header = read_header(trash_file);
-    cmd.info(trash_cat_header->total_trashed_files);
+    cmd.info(trash_cat_header->total_trashed_files, trash_file);
 
     if (cmd.contains(cmdopt::Restore) || cmd.contains(cmdopt::RestoreCurrent)) {
       // restore mode
     } 
-    else {
-      // normal trash mode
-
-    }
+    else trash_files(cmd.get_files());
 
     delete trash_cat_header;
     std::fclose(trash_file);

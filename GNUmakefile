@@ -3,7 +3,7 @@
 override OUTPUT = trm
 
 CXX = c++
-CXXFLAG := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -Wall -Wextra -ffunction-sections -I/home/annetthossain/include/ -Isrc/ -std=c++23 -fPIE -g
+CXXFLAG := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -ffunction-sections -I/home/annetthossain/include/ -Isrc/ -std=c++23 -fPIE -g
 LDFLAG := -flto  -Wl,-O2 -Wl,--as-needed -Wl,--gc-sections -Wl,-z,relro,-z,now -g
 
 
