@@ -4,8 +4,8 @@ override OUTPUT = trm
 
 CC = cc
 
-CFLAGS := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -ffunction-sections -Isrc/ -std=gnu23 -fPIE -g
-LDFLAGS := -Wl,-O2 -Wl,--as-needed -Wl,--gc-sections -Wl,-z,relro,-z,now -g -flto
+CFLAGS := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -ffunction-sections -Isrc/ -std=gnu23 -fPIE -g -pthread
+LDFLAGS := -Wl,-O2 -Wl,--as-needed -Wl,--gc-sections -Wl,-z,relro,-z,now -g -flto -pthread
 
 
 override SRCFILES := $(shell find -L src/ -type f 2>/dev/null | LC_ALL=C sort)

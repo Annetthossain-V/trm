@@ -18,7 +18,9 @@ struct cmdline {
 } __attribute__((packed));
 typedef struct cmdline cmdline_t;
 
-bool parseCmdline(cmdline_t* cmd);
+bool parseCmdline(cmdline_t* cmd, const int argc, const char** argv);
 void freeCmdline(cmdline_t* cmd);
+
+bool checkCmdline(cmdline_t* cmd);
 
 #endif // CMDLINE_H
