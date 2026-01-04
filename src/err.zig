@@ -1,3 +1,6 @@
 
 
-pub const err = error { CmdlineFailed };
+pub const err = error { 
+  CmdlineFailed,
+  InitFailed,
+};
