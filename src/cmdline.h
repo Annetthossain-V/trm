@@ -23,4 +23,6 @@ void freeCmdline(cmdline_t* cmd);
 
 bool checkCmdline(cmdline_t* cmd);
 
+extern const float VERSION;
+
 #endif // CMDLINE_H
