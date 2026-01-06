@@ -14,7 +14,7 @@
 static char** TRASHED_FILES; // safely leaking memory
 static u64 TRASHED_FILES_LEN;
 
-static trash_entry_t** TRASHED_ENTRIES;
+static trash_entry_t** TRASHED_ENTRIES; // also safely leaking memory
 static u64 TRASHED_ENTRIES_LEN;
 
 bool init_trash_dir(void) {
@@ -101,10 +101,13 @@ bool init_trash_cat(void) {
 
   // parse entries 
   TRASHED_ENTRIES_LEN = 0;
+  TRASHED_ENTRIES = (trash_entry_t**) malloc(sizeof(trash_entry_t*) * header.total_trashed_files);
 
-  for (u64 i = 0; i < header.total_trashed_files; ++i) {
-    
-  }
+  for (u64 i = 0; i < header.total_trashed_files; ++i)
+    TRASHED_ENTRIES[TRASHED_ENTRIES_LEN++] = readentry(trash_cat);
+
+  if (TRASHED_ENTRIES_LEN != header.total_trashed_files)
+    panic("something went wrong!");
 
   fclose(trash_cat);
   return true;
@@ -119,4 +122,17 @@ char** get_trashed_files(u64* trashed_files_len) {
 
   *trashed_files_len = TRASHED_FILES_LEN;
   return TRASHED_FILES;
+}
+
+trash_entry_t** get_trashed_entries(u64* trashed_entries_len) {
+  if (trashed_entries_len == NULL)
+    panic("null ptr");
+    
+  *trashed_entries_len = TRASHED_ENTRIES_LEN;
+  return TRASHED_ENTRIES;
+}
+
+void fini(void) {
+
+  return;
 }

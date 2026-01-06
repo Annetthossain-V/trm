@@ -4,7 +4,7 @@ override OUTPUT = trm
 
 CC = cc
 
-CFLAGS := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -ffunction-sections -Isrc/ -std=gnu23 -fPIE -g -pthread
+CFLAGS := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -ffunction-sections -Isrc/ -std=gnu23 -fPIE -g -pthread -finline-functions -masm=intel
 LDFLAGS := -Wl,-O2 -Wl,--as-needed -Wl,--gc-sections -Wl,-z,relro,-z,now -g -flto -pthread
 
 
