@@ -12,6 +12,7 @@ enum CmdOpt {
   OptPrint,
   OptClean,
   OptRemove,
+  OptInit,
 };
 
 struct Cmdline {
@@ -20,6 +21,10 @@ struct Cmdline {
 
   Cmdline(const int argc, const char **argv);
   ~Cmdline() = default;
+
+  bool contains(CmdOpt opt);
 };
+
+bool CheckHelpOrVersion(Cmdline &cmd);
 
 #endif // _CMD_H
