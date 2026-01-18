@@ -11,6 +11,7 @@ options:\n\
     --help # prints this message\n\
     --version # prints version info\n\
     --print-trashed # print trashed files\n\
+    --verbose # prints info on whats happening\n\
   <Trash>\n\
     --restore # restore given files from trashed files\n\
     --restore-current # restore to current directory instead of the original one\n\
@@ -42,6 +43,8 @@ Cmdline::Cmdline(const int argc, const char **argv) {
         this->opts.push_back(CmdOpt::OptRemove);
       else if (strcmp(argv[i], "--init") == 0)
         this->opts.push_back(CmdOpt::OptInit);
+      else if (strcmp(argv[i], "--verbose") == 0)
+        this->opts.push_back(CmdOpt::OptVerbose);
 
       else {
         std::println("Argument `{}`", argv[i]);

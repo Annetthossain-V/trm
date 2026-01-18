@@ -4,8 +4,8 @@ override OUTPUT = trm
 
 CXX = g++
 
-CXXFLAGS := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -ffunction-sections -std=c++23 -fPIE -g -pthread -finline-functions -fstack-check -fdata-sections -fomit-frame-pointer -funroll-loops -ftree-vectorize -fstrict-aliasing
-LDFLAGS := -Wl,-O2 -Wl,--as-needed -Wl,--gc-sections -Wl,-z,relro,-z,now -g -flto -pthread #
+CXXFLAGS := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -ffunction-sections -std=c++23 -fPIE -g -finline-functions -fstack-check -fdata-sections -fomit-frame-pointer -funroll-loops -ftree-vectorize -fstrict-aliasing
+LDFLAGS := -Wl,-O2 -Wl,--as-needed -Wl,--gc-sections -Wl,-z,relro,-z,now -g -flto -lzstd #
 
 
 override SRCFILES := $(shell find -L src/ -type f 2>/dev/null | LC_ALL=C sort)

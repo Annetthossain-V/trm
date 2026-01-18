@@ -13,6 +13,7 @@ enum CmdOpt {
   OptClean,
   OptRemove,
   OptInit,
+  OptVerbose,
 };
 
 struct Cmdline {
