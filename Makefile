@@ -3,9 +3,8 @@
 override OUTPUT = trm
 
 CXX = g++
-LD = ld
 
-CXXFLAGS := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -ffunction-sections -Isrc/ -std=c++23 -fPIE -g -pthread -finline-functions -fstack-check -fdata-sections
+CXXFLAGS := -O0 -march=native -mtune=native -fstack-protector -fno-plt -flto -msse4.2 -pipe -ffunction-sections -std=c++23 -fPIE -g -pthread -finline-functions -fstack-check -fdata-sections
 LDFLAGS := -Wl,-O2 -Wl,--as-needed -Wl,--gc-sections -Wl,-z,relro,-z,now -g -flto -pthread #
 
 
@@ -18,11 +17,11 @@ override HEADER_DEPS := $(addprefix target/obj/,$(CFILES:.cc=.cc.d))
 .PHONY: all
 all: target/bin/$(OUTPUT)
 
-target/bin/$(OUTPUT): GNUmakefile $(OBJ)
+target/bin/$(OUTPUT): Makefile $(OBJ)
 		mkdir -p "$(dir $@)"
-		$(CXX) $(LDFLAGS) $(OBJ) -o $(OUTPUT)
+		$(CXX) $(LDFLAGS) $(OBJ) -o target/bin/$(OUTPUT)
 
-target/obj/%.cc.o: %.cc GNUmakefile
+target/obj/%.cc.o: %.cc Makefile
 		mkdir -p "$(dir $@)"
 		$(CXX) $(CXXFLAGS) -c $< -o $@
 
